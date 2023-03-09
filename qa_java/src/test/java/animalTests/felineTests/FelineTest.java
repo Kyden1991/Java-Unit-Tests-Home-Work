@@ -27,7 +27,7 @@ public class FelineTest {
         return new Object[][]{
                 {0, 0},
                 {5, 5},
-                {10, 10}
+                {2147483647, 2147483647}
         };
     }
 
