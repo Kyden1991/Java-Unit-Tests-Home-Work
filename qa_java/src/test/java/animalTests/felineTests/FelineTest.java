@@ -15,19 +15,19 @@ import static org.junit.Assert.*;
 @RunWith(Parameterized.class)
 public class FelineTest {
     private final int setKittens;
-    private final int resKittens;
+//    private final int resKittens;
 
-    public FelineTest(int setKittens, int resKittens) {
+    public FelineTest(int setKittens) {
         this.setKittens = setKittens;
-        this.resKittens = resKittens;
+//        this.resKittens = resKittens;
     }
 
     @Parameterized.Parameters
     public static Object[][] setKittens() {
         return new Object[][]{
-                {0, 0},
-                {5, 5},
-                {2147483647, 2147483647}
+                {0},
+                {5},
+                {2147483647}
         };
     }
 
@@ -41,9 +41,9 @@ public class FelineTest {
     }
 
     @Test
-    public void getFamily() {
-        Feline family = new Feline();
-        String actual = family.getFamily();
+    public void getFamilyReturnCat() {
+        Feline feline = new Feline();
+        String actual = feline.getFamily();
         String expected = "Кошачьи";
         assertEquals(expected, actual);
     }
@@ -53,14 +53,15 @@ public class FelineTest {
         Feline feline = new Feline();
         int actualCountOfKittens = feline.getKittens(setKittens);
 
-        assertEquals(resKittens, actualCountOfKittens);
+        assertEquals(setKittens, actualCountOfKittens);
     }
 
     @Test
     public void getKittensWithoutParameters() {
         Feline feline = new Feline();
         int defaultKittensCount = feline.getKittens();
+        int expectedKittensCount = 1;
 
-        assertEquals(1, defaultKittensCount);
+        assertEquals(expectedKittensCount, defaultKittensCount);
     }
 }
